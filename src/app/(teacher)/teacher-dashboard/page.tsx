@@ -137,7 +137,7 @@ const TeacherIntegratedDashboard: React.FC = () => {
     // Immediately redirect to class without waiting
     setIsModalOpen(false);
     window.open(
-      `${process.env.NEXT_PUBLIC_LOCAL}/?role=teacher&roomID=${selectedRoom.roomID}&userID=${teacherName.firstName}&%classID=${responseId}`
+      `${process.env.NEXT_PUBLIC_LOCAL}/?role=teacher&roomID=${selectedRoom.roomID}&userID=${teacherName.firstName}&classID=${responseId}`
     );
   };
 
