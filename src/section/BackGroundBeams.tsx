@@ -1,11 +1,11 @@
 import React from "react";
 import Image from "next/image";
 import FlipWords from "../component/acertinity/FlipWords";
-import BackgroundImage from "../../public/logo/download.jpg"; // background image
+import BackgroundImage from "../../public/logo/backgroundImage.jpg"; // background image
 
 export default function BackgroundBeamsDemo() {
   return (
-    <div className="relative w-full h-[800px]">
+    <div className="relative w-full h-[750px]">
       {/* Background Image */}
       <Image
         src={BackgroundImage}
@@ -26,7 +26,7 @@ export default function BackgroundBeamsDemo() {
         <h2 className="text-6xl  font-bold text-white mt-4">
           Rural Roots,{" "}
           <FlipWords
-            className="!text-[#3296c2] font-extrabold"
+            className="!text-[#3254C2] font-extrabold"
             words={[
               "United Goals",
               "Inspire Hope",

@@ -5,7 +5,7 @@ import Image from "next/image";
 import { FormField } from "../../../component/auth/login/FormField";
 import { StatusAlert } from "../../../component/auth/login/StatusAlert";
 import { useAuthLogin } from "../../../hooks/useAuthLogin";
-import bgImage from "../../../../public/assets/authImages/student.jpg"; // your login background
+import bgImage from "../../../../public/logo/studentAuthImage.jpg"; // your login background
 
 export default function StudentLogin() {
   const {

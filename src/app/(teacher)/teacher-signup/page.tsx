@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-import signup from "../../../../public/student-Assets/student-signup.png";
+import bgImage from "../../../../public/logo/teacherAuthImage.jpg";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
@@ -173,15 +173,15 @@ export default function Signup() {
       onSubmit={handleSubmit}
       className="min-h-screen bg-gradient-to-r from-blue-100 to-blue-300 flex items-center justify-center p-4"
     >
-      <div className="flex flex-col md:flex-row gap-8 items-center justify-center bg-white rounded-3xl py-12 px-12 shadow-2xl w-full max-w-5xl mx-auto transition-all duration-300 hover:shadow-xl">
-        <Image
-          src={signup}
-          alt="logo"
-          width={500}
-          height={500}
-          className="w-full md:w-1/2 bg-blue-300 h-auto object-cover rounded-3xl shadow-lg transition-transform duration-300 hover:scale-105"
-        />
-        <div className="flex flex-col gap-6 w-full md:w-1/2 max-w-md">
+      <Image
+        src={bgImage}
+        alt="Background"
+        fill
+        priority
+        className="object-cover"
+      />
+      <div className="relative w-full max-w-md p-8 rounded-2xl bg-white/20 backdrop-blur-lg shadow-xl border border-white/30">
+        <div className="flex flex-col gap-6 w-full max-w-md">
           <h1 className="text-4xl font-bold text-gray-900 mb-2 text-center">
             Create Account
           </h1>
