@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { cn } from "../../../lib/utils";
 
 // Card Component
+// Card Component (replace your current Card with this)
 export const Card = React.memo(
   ({
     card,
@@ -15,53 +16,61 @@ export const Card = React.memo(
     index: number;
     hovered: number | null;
     setHovered: React.Dispatch<React.SetStateAction<number | null>>;
-  }) => (
-    <a
-      href={card.link}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="relative w-full h-full block"
-    >
-      <div
-        onMouseEnter={() => setHovered(index)}
-        onMouseLeave={() => setHovered(null)}
-        className={cn(
-          " relative bg-gray-100 dark:bg-neutral-900 overflow-hidden h-80 md:h-[32rem] lg:h-[38rem] w-full transition-all duration-300 ease-out cursor-pointer"
-        )}
-      >
-        <Image
-          src={card.src}
-          alt={card.title}
-          fill
-          className="object-cover absolute inset-0"
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-        />
+  }) => {
+    const Wrapper: any = card.link ? "a" : "div";
+    const wrapperProps = card.link
+      ? {
+          href: card.link,
+          target: "_blank",
+          rel: "noopener noreferrer",
+          className: "relative w-full h-full block",
+        }
+      : { className: "relative w-full h-full block" };
 
-        {/* Overlay that appears on hover */}
+    return (
+      <Wrapper {...wrapperProps}>
         <div
+          onMouseEnter={() => setHovered(index)}
+          onMouseLeave={() => setHovered(null)}
           className={cn(
-            "absolute inset-0 bg-black/50 flex items-end transition-opacity duration-300",
-            hovered === index ? "opacity-100" : "opacity-0"
+            "relative bg-gray-100 dark:bg-neutral-900 overflow-hidden h-80 md:h-[32rem] lg:h-[38rem] w-full transition-all duration-300 ease-out cursor-pointer"
           )}
         >
+          <Image
+            src={card.src}
+            alt={card.title}
+            fill
+            className="object-cover absolute inset-0"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          />
+
+          {/* Overlay that appears on hover */}
           <div
             className={cn(
-              "w-full p-6 pb-20 transition-transform duration-300 ease-out",
-              hovered === index
-                ? "transform translate-y-0"
-                : "transform translate-y-full"
+              "absolute inset-0 bg-black/50 flex items-end transition-opacity duration-300",
+              hovered === index ? "opacity-100" : "opacity-0"
             )}
           >
-            <div className="text-center">
-              <div className="text-xl md:text-4xl font-medium bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-200">
-                {card.title}
+            <div
+              className={cn(
+                "w-full p-6 pb-20 transition-transform duration-300 ease-out",
+                hovered === index
+                  ? "transform translate-y-0"
+                  : "transform translate-y-full"
+              )}
+            >
+              <div className="text-center">
+                {/* <-- whitespace-pre-line converts \n to a break */}
+                <div className="text-xl md:text-4xl font-medium bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-200 whitespace-pre-line">
+                  {card.title}
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </a>
-  )
+      </Wrapper>
+    );
+  }
 );
 
 Card.displayName = "Card";

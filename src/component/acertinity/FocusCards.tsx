@@ -13,9 +13,9 @@ export default function FocusCardsDemo() {
       link: "/student-signup",
     },
     {
-      title: "Parents Login",
+      title: "Parents Login\nComing Soon!",
       src: "/assets/parent-login.jpeg",
-      link: "/parent-signup",
+      link: "",
     },
   ];
 

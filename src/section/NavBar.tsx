@@ -53,9 +53,9 @@ function Navbar({
   ];
 
   return (
-    <div className="fixed top-3 inset-x-0 mx-auto z-50 max-w-5xl px-8  ">
+    <div className="fixed top-3 inset-x-0 mx-auto z-50 max-w-3xl px-8  ">
       <Menu setActive={setActive}>
-        <div className="flex items-center px-2 gap-16 text-lg font-bold">
+        <div className="flex items-center px-2 gap-12 text-lg font-bold">
           <Link href="#login-section">
             <MenuItem setActive={setActive} active={active} item="Login">
               <HoveredLink href="#login-section" onClick={onLoginClick}>
@@ -139,7 +139,7 @@ function Navbar({
           </li> */}
 
           {/* Chatbot */}
-          <a
+          {/* <a
             href="https://cdn.botpress.cloud/webchat/v2.2/shareable.html?configUrl=https://files.bpcontent.cloud/2024/12/12/07/20241212073353-5PAOC6G6.json"
             target="_blank"
             rel="noopener noreferrer"
@@ -147,7 +147,7 @@ function Navbar({
           >
             <FaRobot className="h-6 w-6 text-green-500 hover:text-green-700" />
             <span className="text-green-500 hover:text-green-700">Chatbot</span>
-          </a>
+          </a> */}
 
           <ThemeToggle className="ml-2" />
         </div>
