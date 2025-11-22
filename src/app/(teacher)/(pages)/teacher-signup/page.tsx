@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-import bgImage from "../../../../public/logo/teacherAuthImage.jpg";
+import bgImage from "../../../../../public/logo/teacherAuthImage.jpg";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { signupTeacher } from "../../services";

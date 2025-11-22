@@ -10,7 +10,7 @@ import {
 import type { RootState } from "../../../redux/store";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import login from "../../../../public/student-Assets/student-login.png";
+import login from "../../../../public/logo/studentAuthImage.jpg";
 import Link from "next/link";
 import axios from "axios";
 

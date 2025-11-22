@@ -10,7 +10,7 @@ import {
 import type { RootState } from "../../../../redux/store";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import bgImage from "../../../../public/logo/teacherAuthImage.jpg";
+import bgImage from "../../../../../public/logo/teacherAuthImage.jpg";
 import Link from "next/link";
 import { loginTeacher, getTeacherProfile } from "../../services";
 
