@@ -1,5 +1,5 @@
 "use client";
-import login from "../../../public/assets/login.png";
+import login from "../../../../public/logo/studentAuthImage.jpg";
 import React, { useState, ChangeEvent, FormEvent } from "react";
 import {
   Sidebar,
@@ -18,8 +18,6 @@ import {
   IconMessageCircle,
 } from "@tabler/icons-react";
 import Image from "next/image";
-import { useSelector } from "react-redux";
-import type { RootState } from "../../../redux/store";
 
 interface FeedbackForm {
   feedback: string;
