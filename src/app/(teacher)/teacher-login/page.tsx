@@ -63,13 +63,13 @@ export default function Login() {
     dispatch(setLoading(true));
 
     try {
-      const loginResponse = await axios.post("/api/teacher-login", {
+      const loginResponse = await axios.post("/api/auth/teacher/login", {
         email,
         password,
       });
 
       if (loginResponse.status === 200) {
-        const userResponse = await axios.get("/api/teacher-profile");
+        const userResponse = await axios.get("/api/profile/teacher-profile");
         dispatch(setTeacher(userResponse.data));
         router.push("/teacher-dashboard");
       }

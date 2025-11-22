@@ -113,7 +113,7 @@ const TeacherIntegratedDashboard: React.FC = () => {
     setIsSubmitting(true);
 
     // Save class data in background (don't wait for response)
-    const response = await fetch("/api/teacher-classes", {
+    const response = await fetch("/api/classes/teacher", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

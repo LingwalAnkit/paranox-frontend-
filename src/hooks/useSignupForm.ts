@@ -1,7 +1,11 @@
 // hooks/useSignupForm.ts
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import axios from "axios";
+import {
+  studentApi,
+  validateSignupData,
+  type ApiError,
+} from "../app/(student)/services";
 
 interface BaseFormData {
   firstName: string;
@@ -12,14 +16,12 @@ interface BaseFormData {
 
 interface UseSignupFormProps<T extends BaseFormData> {
   initialFormData: T;
-  apiEndpoint: string;
   redirectPath: string;
   validateForm?: (data: T) => Partial<Record<keyof T, string>>;
 }
 
 export function useSignupForm<T extends BaseFormData>({
   initialFormData,
-  apiEndpoint,
   redirectPath,
   validateForm,
 }: UseSignupFormProps<T>) {
@@ -50,30 +52,21 @@ export function useSignupForm<T extends BaseFormData>({
     setError("");
 
     // Validate form if validation function is provided
-    if (validateForm) {
-      const validationErrors = validateForm(formData);
-      if (Object.keys(validationErrors).length > 0) {
-        setErrors(validationErrors);
-        return;
-      }
+    const validator = validateForm || validateSignupData;
+    const validationErrors = validator(formData as any);
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors as Partial<Record<keyof T, string>>);
+      return;
     }
 
     setLoading(true);
 
     try {
-      const processedData = {
-        ...formData,
-        // Convert numeric fields
-        ...((formData as any).age && { age: parseInt((formData as any).age) }),
-      };
-
-      const response = await axios.post(apiEndpoint, processedData);
-
-      if (response.status === 201) {
-        router.push(redirectPath);
-      }
-    } catch (error: any) {
-      setError(error.response?.data?.message || "Something went wrong");
+      await studentApi.signup(formData as any);
+      router.push(redirectPath);
+    } catch (error) {
+      const apiError = error as ApiError;
+      setError(apiError.message);
     } finally {
       setLoading(false);
     }

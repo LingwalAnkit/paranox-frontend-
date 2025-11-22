@@ -153,7 +153,7 @@ export default function Signup() {
     setLoading(true);
 
     try {
-      const response = await axios.post("/api/teacher-signup", {
+      const response = await axios.post("/api/auth/teacher/signup", {
         ...formData,
         age: parseInt(formData.age),
       });

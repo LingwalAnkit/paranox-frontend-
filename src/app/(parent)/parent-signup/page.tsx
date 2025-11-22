@@ -132,7 +132,7 @@ export default function Signup() {
     setLoading(true);
 
     try {
-      const response = await axios.post("/api/parent-signup", {
+      const response = await axios.post("/api/auth/parent/signup", {
         ...formData,
         age: parseInt(formData.age),
       });

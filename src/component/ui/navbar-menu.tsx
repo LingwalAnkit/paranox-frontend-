@@ -79,10 +79,7 @@ export const Menu = ({
   children: React.ReactNode;
 }) => {
   return (
-    <nav
-      onMouseLeave={() => setActive(null)}
-      className="relative rounded-full  dark:bg-black dark:border-white/[0.2] shadow-input flex items-center justify-center py-4 backdrop-blur-xl  shadow-xs"
-    >
+    <nav onMouseLeave={() => setActive(null)} className="">
       {children}
     </nav>
   );
@@ -124,7 +121,7 @@ export const HoveredLink = ({ children, ...rest }: any) => {
   return (
     <Link
       {...rest}
-      className="text-blue-700 dark:text-neutral-200 hover:text-neutral-500"
+      className="text-[#3296c2] dark:text-neutral-200 hover:underline font-semibold"
     >
       {children}
     </Link>

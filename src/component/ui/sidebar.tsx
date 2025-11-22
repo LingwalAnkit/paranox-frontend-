@@ -36,7 +36,7 @@ export const SidebarLink: React.FC<SidebarLinkProps> = ({
     <Link
       href={link.href}
       className={cn(
-        "flex items-center justify-start gap-2 group/sidebar py-2 ",
+        "flex items-center justify-start gap-2 group/sidebar py-2 px-1",
         isActive && "bg-blue-500 dark:bg-blue-600", // Active state styling
         className
       )}
@@ -139,7 +139,7 @@ export const DesktopSidebar = ({
     <>
       <motion.div
         className={cn(
-          "h-full px-4 py-4 hidden md:flex md:flex-col bg-neutral-100 dark:bg-neutral-800 w-[300px] flex-shrink-0",
+          "h-full px-3 py-4 hidden md:flex md:flex-col bg-neutral-100 dark:bg-neutral-800 w-[300px] flex-shrink-0",
           className
         )}
         animate={{

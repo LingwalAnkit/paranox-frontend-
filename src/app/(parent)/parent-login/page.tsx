@@ -58,7 +58,7 @@ export default function ParentLogin() {
     dispatch(setLoading(true));
 
     try {
-      const loginResponse = await axios.post("/api/parent-login", {
+      const loginResponse = await axios.post("/api/auth/parent/login", {
         email,
         password,
       });

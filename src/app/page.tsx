@@ -1,10 +1,10 @@
 "use client";
-import { CardHoverEffectDemo } from "@/section/CardHover";
-import { Footer } from "@/section/Footer";
-import LoginSection from "@/section/LoginSection";
+import { Feature } from "@/component/layout/Feature";
+import { Footer } from "@/component/layout/Footer";
+import LoginSection from "@/component/layout/LoginSection";
 import { useRef } from "react";
-import BackGroundBeams from "../section/BackGroundBeams";
-import NavBar from "../section/NavBar";
+import Background from "../component/layout/BackGround";
+import NavBar from "../component/layout/NavBar";
 
 // import { LanguageSwitcher } from "@/section/languageSwitcher";
 
@@ -24,8 +24,8 @@ export default function Home() {
     <>
       {/* <LanguageSwitcher></LanguageSwitcher> */}
       <NavBar onLoginClick={scrollToLogin} />
-      <BackGroundBeams />
-      <CardHoverEffectDemo />
+      <Background />
+      <Feature />
       {/* <ProductShowcase/> */}
       <LoginSection loginRef={loginRef} />
       <Footer />

@@ -2,7 +2,6 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/navigation";
-import axios from "axios";
 import type { RootState } from "../redux/store";
 import {
   setUser,
@@ -10,15 +9,14 @@ import {
   setLoading,
   clearError,
 } from "../redux/userSlice";
-
-interface LoginCredentials {
-  email: string;
-  password: string;
-}
+import {
+  studentApi,
+  validateLoginCredentials,
+  type LoginCredentials,
+  type ApiError,
+} from "../app/(student)/services";
 
 interface UseAuthLoginProps {
-  loginEndpoint: string;
-  profileEndpoint: string;
   redirectPath: string;
   validateForm?: (credentials: LoginCredentials) => {
     email: string;
@@ -27,8 +25,6 @@ interface UseAuthLoginProps {
 }
 
 export const useAuthLogin = ({
-  loginEndpoint,
-  profileEndpoint,
   redirectPath,
   validateForm,
 }: UseAuthLoginProps) => {
@@ -49,29 +45,11 @@ export const useAuthLogin = ({
     };
   }, [dispatch]);
 
-  const defaultValidateForm = (credentials: LoginCredentials) => {
-    const errors = { email: "", password: "" };
-
-    if (!credentials.email) {
-      errors.email = "Email is required";
-    } else if (!/\S+@\S+\.\S+/.test(credentials.email)) {
-      errors.email = "Please enter a valid email";
-    }
-
-    if (!credentials.password) {
-      errors.password = "Password is required";
-    } else if (credentials.password.length < 6) {
-      errors.password = "Password must be at least 6 characters";
-    }
-
-    return errors;
-  };
-
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
 
     const credentials = { email, password };
-    const validator = validateForm || defaultValidateForm;
+    const validator = validateForm || validateLoginCredentials;
     const errors = validator(credentials);
 
     if (errors.email || errors.password) {
@@ -83,17 +61,12 @@ export const useAuthLogin = ({
     dispatch(setLoading(true));
 
     try {
-      const loginResponse = await axios.post(loginEndpoint, credentials);
-
-      if (loginResponse.status === 200) {
-        const userResponse = await axios.get(profileEndpoint);
-        dispatch(setUser(userResponse.data));
-        router.push(redirectPath);
-      }
-    } catch (error: any) {
-      const errorMessage =
-        error.response?.data?.message || "An error occurred during login";
-      dispatch(setUserError(errorMessage));
+      const response = await studentApi.loginWithProfile(credentials);
+      dispatch(setUser(response.data));
+      router.push(redirectPath);
+    } catch (error) {
+      const apiError = error as ApiError;
+      dispatch(setUserError(apiError.message));
     } finally {
       dispatch(setLoading(false));
     }
