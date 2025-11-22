@@ -62,8 +62,22 @@ export const useAuthLogin = ({
 
     try {
       const response = await studentApi.loginWithProfile(credentials);
-      dispatch(setUser(response.data));
-      router.push(redirectPath);
+
+      if (response.data) {
+        const {
+          firstName,
+          lastName,
+          email,
+          age,
+          class: userClass,
+        } = response.data;
+        dispatch(
+          setUser({ firstName, lastName, email, age, class: userClass })
+        );
+        router.push(redirectPath);
+      } else {
+        dispatch(setUserError("Login successful but no user data received"));
+      }
     } catch (error) {
       const apiError = error as ApiError;
       dispatch(setUserError(apiError.message));
