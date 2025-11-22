@@ -7,17 +7,14 @@ import {
   SidebarLink,
 } from "../../../component/ui/sidebar";
 import Image from "next/image";
-import { useSelector } from "react-redux";
-import type { RootState } from "../../../redux/store";
 
 // Import common components and utilities
 import { Logo, LogoIcon } from "../../../component/layout/sidebar/Logo";
 import { FeedbackModal } from "../../../component/layout/sidebar/FeedbackModal";
 import { useFeedback } from "../../../hooks/useFeedback";
-import { getStudentLinks } from "../../../component/layout/sidebar/sidebarLinks";
+import { getTeacherLinks } from "../../../component/layout/sidebar/sidebarLinks";
 
-const StudentSidebar = () => {
-  const user = useSelector((state: RootState) => state.user.user);
+const TeacherSidebar = () => {
   const [open, setOpen] = useState<boolean>(false);
 
   const {
@@ -29,7 +26,7 @@ const StudentSidebar = () => {
     handleSubmitFeedback,
   } = useFeedback();
 
-  const links = getStudentLinks(handleFeedbackClick);
+  const links = getTeacherLinks(handleFeedbackClick);
 
   return (
     <>
@@ -48,23 +45,24 @@ const StudentSidebar = () => {
               ))}
             </div>
           </div>
-          <SidebarLink
-            link={{
-              label: user?.firstName || "Guest",
-              href: "/dashboard",
-              icon: (
-                <Image
-                  src={login}
-                  className="h-7 w-7 flex-shrink-0 rounded-full"
-                  width={50}
-                  height={50}
-                  alt="Avatar"
-                />
-              ),
-            }}
-            className="hover:bg-blue-300 dark:hover:bg-neutral-700 text-blue-900 dark:text-white rounded-2xl"
-            labelClassName="text-lg font-medium"
-          />
+          <div>
+            <SidebarLink
+              link={{
+                label: "teacher",
+                href: "/dashboard",
+                icon: (
+                  <Image
+                    src={login}
+                    className="h-7 w-7 flex-shrink-0 rounded-full"
+                    width={50}
+                    height={50}
+                    alt="Avatar"
+                  />
+                ),
+              }}
+              className="hover:bg-blue-300 dark:hover:bg-neutral-700 text-blue-900 dark:text-white rounded-2xl"
+            />
+          </div>
         </SidebarBody>
       </Sidebar>
 
@@ -79,4 +77,4 @@ const StudentSidebar = () => {
   );
 };
 
-export default StudentSidebar;
+export default TeacherSidebar;

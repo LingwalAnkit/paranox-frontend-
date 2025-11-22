@@ -7,7 +7,7 @@ import { useTranslation } from "react-i18next";
 import { FaRobot } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { HoveredLink, Menu, MenuItem, ProductItem } from "../ui/navbar-menu";
-import ThemeToggle from "../../section/ThemeToggle";
+import ThemeToggle from "../../component/layout/ThemeToggle";
 
 export default function NavbarDemo({ onLoginClick }: { onLoginClick: any }) {
   return (
@@ -36,15 +36,6 @@ function Navbar({
   const currentLanguage = useSelector(
     (state: RootState) => state.translation.currentLanguage
   );
-
-  const languages = [
-    { code: "en", name: "English" },
-    { code: "hi", name: "हिन्दी" },
-    { code: "pa", name: "ਪੰਜਾਬੀ" },
-    { code: "bn", name: "বাংলা" },
-    { code: "mr", name: "मराठी" },
-    { code: "kn", name: "ಕನ್ನಡ" },
-  ];
 
   return (
     <div className="fixed top-3 inset-x-0 mx-auto z-50 max-w-4xl px-0 py-2 rounded-full bg-white/60 dark:bg-black/70 shadow-md backdrop-blur-md border border-gray-200 dark:border-white/[0.2]  items-center justify-center flex">

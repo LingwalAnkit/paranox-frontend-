@@ -1,5 +1,5 @@
 import React from "react";
-import FocusCardsDemo from "../acertinity/FocusCards";
+import FocusCardsDemo from "../ui/FocusCards";
 
 const LoginSection = ({ loginRef }: { loginRef: any }) => {
   return (

@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import FlipWords from "../acertinity/FlipWords";
+import FlipWords from "../ui/FlipWords";
 import BackgroundImage from "../../../public/logo/backgroundImage.jpg"; // background image
 
 export default function Background() {

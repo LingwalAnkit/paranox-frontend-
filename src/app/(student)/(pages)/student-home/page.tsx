@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import WobbleCardDemo from "@/component/acertinity/WobbleCard";
 import { BentoGridDemo } from "./components/BentoGrid";
 import SideBarComponent from "../../components/sidebar";
 
