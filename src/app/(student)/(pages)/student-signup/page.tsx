@@ -2,9 +2,9 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-import { FormInput } from "../../../component/auth/signup/FormInput";
-import { ErrorAlert } from "../../../component/auth/signup/ErrorAlert";
-import { useSignupForm } from "../../../hooks/useSignupForm";
+import { FormInput } from "../../../../component/auth/signup/FormInput";
+import { ErrorAlert } from "../../../../component/auth/signup/ErrorAlert";
+import { useSignupForm } from "../../../../hooks/useSignupForm";
 import bgImage from "../../../../public/logo/studentAuthImage.jpg";
 
 interface StudentFormData {
